@@ -3,32 +3,37 @@ import handlebars from "express-handlebars";
 
 const app = express();
 
-app.engine("hbs", handlebars.engine({
-    extname: "hbs"
-}))
+app.engine(
+  "hbs",
+  handlebars.engine({
+    extname: "hbs",
+  })
+);
 
-app.set("view engine", "hbs")
+app.set("view engine", "hbs");
 
 app.use("/static", express.static("public"));
 
-app.get('/', (req, res) => {
-    res.render("home");
-})
+app.get("/", (req, res) => {
+  res.render("home");
+});
 
 app.get("/create", (req, res) => {
-    res.render("create")
-})
+  res.render("create");
+});
 
 app.get("/about", (req, res) => {
-    res.render("about")
-})
+  res.render("about");
+});
 
 app.get("/search", (req, res) => {
-    res.render("search")
-})
+  res.render("search");
+});
 
-app.get("*", (req, res) => {
-    res.render("404")
-})
+// app.get("*", (req, res) => {
+//     res.render("404")
+// })
 
-app.listen(5000, () => console.log("Server is listening on http://localhost:5000..."))
+app.listen(5000, () =>
+  console.log("Server is listening on http://localhost:5000...")
+);
